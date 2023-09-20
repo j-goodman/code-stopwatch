@@ -1,24 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+
+import CodeEditor from '@uiw/react-textarea-code-editor';
 
 function App() {
+  const [code, setCode] = React.useState(
+    `function addTwoNumbers(a, b) {\n  return a + b;\n}`
+  );
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <CodeEditor
+      value={code}
+      language="js"
+      placeholder="Please enter JS code."
+      onChange={(evn) => setCode(evn.target.value)}
+      padding={15}
+      style={{
+        fontSize: 12,
+        backgroundColor: "#f5f5f5",
+        fontFamily: 'ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace',
+      }}
+    />
   );
 }
 
