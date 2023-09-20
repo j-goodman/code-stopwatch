@@ -7,6 +7,11 @@ function App() {
   const [code, setCode] = React.useState(
     `function addTwoNumbers(a, b) {\n  return a + b;\n}`
   );
+
+  const executeCode = () => {
+    setTimeout(code, 1);
+  }
+
   return (
     <section>
       <h2>stopwatch</h2>
@@ -22,6 +27,7 @@ function App() {
           fontFamily: 'ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace',
         }}
       />
+      <button onClick={executeCode}>execute</button>
     </section>
   );
 }
