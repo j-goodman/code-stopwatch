@@ -9,7 +9,18 @@ function App() {
   );
 
   const executeCode = () => {
-    setTimeout(code, 1);
+    window.startTime = Date.now();
+    const runCode = `(() => {
+      ${code}
+      window.endTime = Date.now();
+      window.logTime()
+    })()
+    `
+    setTimeout(runCode, 1);
+  }
+  
+  window.logTime = () => {
+    console.log("Time:", (window.endTime - window.startTime) + "ms")
   }
 
   return (
