@@ -5,7 +5,12 @@ import CodeEditor from '@uiw/react-textarea-code-editor';
 
 function App() {
   const [code, setCode] = React.useState(
-    `function addTwoNumbers(a, b) {\n  return a + b;\n}`
+    `const n = 300000000;
+let x = 0;
+
+while (x < n) {
+  x += 1;
+}`
   );
   const [timerText, setTimerText] = React.useState("time:")
 
