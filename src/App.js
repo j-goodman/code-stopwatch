@@ -40,7 +40,7 @@ function App() {
         padding={15}
         style={{
           fontSize: 12,
-          backgroundColor: "#f5f5f5",
+          backgroundColor: "#fafafa",
           fontFamily: 'ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace',
         }}
       />
