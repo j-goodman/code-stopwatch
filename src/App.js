@@ -7,9 +7,11 @@ function App() {
   const [code, setCode] = React.useState(
     `function addTwoNumbers(a, b) {\n  return a + b;\n}`
   );
+  const [timerText, setTimerText] = React.useState("time:")
 
   const executeCode = () => {
     window.startTime = Date.now();
+    setTimerText("...")
     const runCode = `(() => {
       ${code}
       window.endTime = Date.now();
@@ -20,7 +22,11 @@ function App() {
   }
   
   window.logTime = () => {
-    console.log("Time:", (window.endTime - window.startTime) + "ms")
+    let time = window.endTime - window.startTime
+    time = time <= 4 ? "< 4" : time
+    const text = "time: " + time + "ms"
+    console.log(text)
+    setTimerText(text)
   }
 
   return (
@@ -39,6 +45,7 @@ function App() {
         }}
       />
       <button onClick={executeCode}>execute</button>
+      <h4>{timerText}</h4>
     </section>
   );
 }
