@@ -4,8 +4,9 @@ import React from 'react';
 import CodeEditor from '@uiw/react-textarea-code-editor';
 
 function App() {
+  const [repetitions, setRepetitions] = React.useState(1)
   const [code, setCode] = React.useState(
-    `const n = 300000000;
+`const n = 300000000;
 let x = 0;
 
 while (x < n) {
@@ -17,8 +18,14 @@ while (x < n) {
   const executeCode = () => {
     window.startTime = Date.now();
     setTimerText("...")
+    let userCode = ``
+    for (let i = 0; i < repetitions; i++) {
+      userCode += `if (true) {
+        ${code}
+      }`
+    }
     const runCode = `(() => {
-      ${code}
+      ${userCode}
       window.endTime = Date.now();
       window.logTime()
     })()
