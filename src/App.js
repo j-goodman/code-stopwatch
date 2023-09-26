@@ -16,6 +16,11 @@ while (x < n) {
   const [timerText, setTimerText] = React.useState("time:")
 
   const executeCode = () => {
+    if (!Number(repetitions)) {
+      setTimerText("Repetitions must be a number greater than 0.")
+      setRepetitions(1)
+      return null
+    }
     window.startTime = Date.now();
     setTimerText("...")
     let userCode = ``
@@ -31,6 +36,10 @@ while (x < n) {
     })()
     `
     setTimeout(runCode, 1);
+  }
+
+  const handleRepetitionsChange = (event) => {
+    setRepetitions(event.target.value)
   }
   
   window.logTime = () => {
@@ -57,7 +66,11 @@ while (x < n) {
         }}
       />
       <button onClick={executeCode}>execute</button>
-      <h4>{timerText}</h4>
+      <div className="input-container">
+        <h4>repetitions:</h4>
+        <input onChange={handleRepetitionsChange} value={repetitions}></input>
+      </div>
+      <h3>{timerText}</h3>
     </section>
   );
 }
